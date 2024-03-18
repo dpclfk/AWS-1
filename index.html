@@ -6,12 +6,51 @@
   </head>
   <body>
     <script>
-      console.log(a);
+      // console.log(a);
       console.log(c);
       c();
       let a = 1;
       var b = 2;
       function c() {}
+
+      const f = {
+        a: 1,
+        b: 2,
+        c: function () {
+          console.log(this);
+          const d = {
+            getThis: () => {
+              console.log(this);
+            },
+          };
+          d.getThis();
+        },
+        d: () => {
+          console.log(this);
+        },
+      };
+      f.c();
+      f.d();
+
+      class Test {
+        a = function () {
+          console.log(this);
+        };
+        b = () => {
+          console.log(this);
+        };
+      }
+      const test = new Test(); //new자체로 바인딩
+      test.a();
+      test.b();
+
+      // const funcA = () => {
+      //   console.log(this);
+      // };
+      // const funcB = () => {
+      //   funcA();
+      //   console.log(this);
+      // };
     </script>
   </body>
 </html>
