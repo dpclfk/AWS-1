@@ -2,6 +2,10 @@
 
 -JS 어떻게 작동하는가?
 
+# Javascript Runtime
+
+-Runtime : 환경, 코드를 실행시키기 위한 환경
+
 ```이벤트 루프(Event Loop)
 브라우저(정식명칭은 이벤트루프)안에 JSEngine(V8,V8은엔진 이름임), Web APIS, CallbackQueue, Enent Loop
 JSEngine안에 Callstack, MemoryHeap
@@ -39,3 +43,15 @@ Web APIs안에 Window(BOM), setTimeout, setInterval, Ajax
 # 인터페이스 구현
 
 - 인터페이스 == Interface(API)
+
+chain
+
+- Scope chain
+  - Varlabe Envirment => outer
+
+Prototype chain
+
+bubbling
+안에 다른 div가 있어도 밖에있는 div가 클릭받을수있게 하는것
+
+밖에서 들어오는건 capturing(사실상 거의 안씀, 온클릭으로 불가능)

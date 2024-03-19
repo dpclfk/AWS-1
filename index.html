@@ -51,6 +51,25 @@
       //   funcA();
       //   console.log(this);
       // };
+
+      // fetch("http://127.0.0.1:5500/kga.html")
+      //   .then((data) => {
+      //     return data.text();
+      //   })
+      //   .then((str) => {
+      //     console.log(str);
+      //   });
+
+      const getHTML = async () => {
+        try {
+          const data = await fetch("http://127.0.0.1:5500/kga.html");
+          const str = await data.text();
+          console.log(str);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getHTML();
     </script>
   </body>
 </html>
