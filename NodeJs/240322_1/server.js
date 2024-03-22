@@ -6,7 +6,7 @@ const server = net.createServer((client) => {
   client.on("data", (data) => {
     console.log(data.toString() + "에 요청을 받았어");
     inter = setInterval(() => {
-      const now = new Date().toLocaleString();
+      const now = new Date().toString();
       console.log(now + "에 요청을 보냈어");
       client.write(now);
     }, 1000);
