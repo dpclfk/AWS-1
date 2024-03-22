@@ -1,9 +1,11 @@
 const net = require("net");
 
+let inter;
+
 const server = net.createServer((client) => {
   client.on("data", (data) => {
     console.log(data.toString() + "에 요청을 받았어");
-    setTimeout(() => {
+    inter = setInterval(() => {
       const now = new Date().toLocaleString();
       console.log(now + "에 요청을 보냈어");
       client.write(now);
@@ -18,6 +20,8 @@ const server = net.createServer((client) => {
 
   client.on("close", () => {
     console.log("client 연결 종료");
+    clearInterval(inter);
+    server.close();
   });
 });
 

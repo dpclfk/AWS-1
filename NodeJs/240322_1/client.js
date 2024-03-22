@@ -12,10 +12,10 @@ socket.on("connect", () => {
 
 socket.on("data", (data) => {
   console.log(data.toString() + "에 응답 받았어");
-  setTimeout(() => {
-    const now = new Date().toLocaleString();
-    console.log(now + "에 요청을 다시 보냈어");
-    socket.write(now);
-  }, 1000);
+  // setTimeout(() => {
+  //   const now = new Date().toLocaleString();
+  //   console.log(now + "에 요청을 다시 보냈어");
+  //   socket.write(now);
+  // }, 1000);
   // socket.end();
 });
