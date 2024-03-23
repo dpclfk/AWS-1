@@ -1,5 +1,5 @@
 const makeReq = (data) => {
-  const tempArr = data.toString().split("\r\n"); //에이터를 문자로 바꿔서 줄바꿈마다 잘라줌
+  const tempArr = data.toString().split("\r\n"); //데이터를 문자로 바꿔서 줄바꿈마다 잘라줌
   const [method, path, protocol] = tempArr[0].split(" "); //띄어쓰기를 기준으로 넣어줌
   const temp = { method, path, protocol }; //템프를 만들어서 첫번째줄 가져온걸 넣어줌
   // [GET, /favicon.ico, HTTP/1.1]  겟은매서드, 페스는 파일경로, 프로토콜
