@@ -28,8 +28,8 @@ const find = (currPath) => {
 find(rootPath);
 console.log(staticObj);
 
-const rootPath1 = path.join(__dirname, "../", "views", "write");
-const isFile = fs.statSync(rootPath1).isFile();
+// const rootPath1 = path.join(__dirname, "../", "views", "write");
+// const isFile = fs.statSync(rootPath1).isFile();
 // console.log(isFile);
 
 module.exports = staticObj;
