@@ -50,3 +50,11 @@ npm i express
 
 깃에서 클론하면 'npm i' 입력시 노드모듈을 받아옴
 뒤에 이름이없기때문에 자동으로 디펜던시즈안에있는것을 찾아서 다운함
+
+npm init
+"start": "node server"
+"main": "server.js",
+
+npm i express
+
+지울때 npm remove 이름
