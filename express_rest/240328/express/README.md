@@ -8,8 +8,6 @@
 
 ## morgan
 
-로그를 남겨주는애
-
 # Wev Developer 알아둬야할 Port
 
 - 3306 : mySQL Default Port

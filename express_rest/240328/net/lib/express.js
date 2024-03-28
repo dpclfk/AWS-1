@@ -1,11 +1,20 @@
 const net = require("net");
+const path = require("path");
+const fs = require("fs");
 
 const { makeReq } = require("./req");
-const { makeResponse } = require("./res");
+const { makeResponse, sendFile } = require("./res");
 
 const createRes = (client) => ({
   end: (data) => {
     client.write(makeResponse("text/html", data));
+    client.end();
+  },
+  sendFile: (_path) => {
+    const file = fs.readFileSync(_path);
+    let type = "text/" + path.extname(_path).slice(1);
+    if (type == "text/js") type = "application/javascript";
+    client.write(sendFile(type, file));
     client.end();
   },
 });
