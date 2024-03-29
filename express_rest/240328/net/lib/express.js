@@ -27,10 +27,15 @@ const app = {
   execList: (req, res) => {
     const { method, path } = req.header;
     let isRun = false;
+    let isNext = false;
     app.funcList.forEach((callback) => {
       if (method != callback.method) return;
       if (path != callback.path) return;
-      callback.func(req, res);
+      if (isRun && !isNext) return;
+      isNext = false;
+      callback.func(req, res, () => {
+        isNext = true;
+      });
       // func(method, path);
       isRun = true;
     });
