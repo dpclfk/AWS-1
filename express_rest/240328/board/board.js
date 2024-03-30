@@ -97,6 +97,7 @@ document.getElementById("add-btn").onclick = (e) => {
   for (let i = 0; i < list.length; i++) {
     if (e.target.form.writer.value == list[i].writer) {
       e.target.form.writer.value = `${e.target.form.writer.value}아님`;
+      break;
     }
   }
   list.push(
