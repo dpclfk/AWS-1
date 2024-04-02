@@ -76,8 +76,10 @@ const getMessage = ({ header: { method, path }, body }) => {
     }
   } else if (method == "POST") {
     if (path == "/") {
+      console.log("askldjasfhkjashkjfhjkafjkkaahskjf", body);
       // body.page, count
       const { page, count } = body; // 구조분해할당
+      console.log("124124151252152", page);
       // {
       const tempArr = [];
       for (
@@ -109,11 +111,12 @@ const getMessage = ({ header: { method, path }, body }) => {
       message = makeResponse("text/text", "?");
     } else if (path == "/board") {
       const { id } = body;
+      console.log("123sdfasdlkfjasdf;jl12421!@$!@$!@$", boards);
+
       const board = boards.find((item) => {
         return item.id == id;
       });
-
-      console.log(board);
+      console.log("123sdfasdlkfjasdf;jl12421", board);
       message = makeResponse(
         "application/json",
         JSON.stringify({ id: board.id, title: board.title, text: board.text })
@@ -151,6 +154,6 @@ const server = net.createServer((client) => {
   });
 });
 
-server.listen(3000, "127.0.0.1", () => {
+server.listen(3001, "127.0.0.1", () => {
   console.log("server open of 3000 port");
 });
