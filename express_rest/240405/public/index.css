@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  border-bottom: 0.2rem solid black;
+  padding: 1rem 0;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.menu {
+  width: 10rem;
+  /* background-color: aqua; */
+  border-right: 1px dashed black;
+}
+
+.contents {
+  flex: 1;
+  height: 100rem;
+  /* background-color: antiquewhite; */
+}
+
+#root.debug .menu {
+  background-color: antiquewhite;
+}
+
+#root.debug .contents {
+  background-color: aqua;
+}
