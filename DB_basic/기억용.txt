@@ -1,0 +1,25 @@
+cd /usr/local/mysql/bin
+
+sudo vi ~/zshrc
+
+입력 export PATH="/usr/local/mysql/bin:$PATH"
+source ~/.zshrc
+
+테이블 생성 
+
+CREATE TABLE 테이블명 (
+  컬럼명 타입 옵션 PK
+)
+
+CREATE TABLE aws_student (
+  id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(5) NOT NULL
+)
+
+INSERT INTO 테이블명 (컬럼명) VALUES (데이터)
+
+SELECT * FROM 테이블명 WHERE 컬럼명
+
+INSERT INTO board(title, writer, content) VALUES('타이틀입니다', 1, '첫글');
+SELECT * FROM baord; -- 작성자의 id를 찾을 수 있다.
+SELECT * FROM user WHERE id=1; 
