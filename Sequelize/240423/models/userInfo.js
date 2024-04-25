@@ -20,12 +20,16 @@ module.exports = (sequelize, DataTypes) => {
           gender: {
             type: DataTypes.ENUM("M", "F"),
           },
+          address: {
+            type: DataTypes.STRING(10),
+          },
         },
         {
           sequelize,
           modelName: "UserInfo",
           tableName: "user_info",
           paranoid: true,
+          underscored: true,
         }
       );
     }

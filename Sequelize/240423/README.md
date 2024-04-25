@@ -68,3 +68,27 @@ SELECT user_crypto.*, user_info.* FROM user_crypto LEFT JOIN user_info ON user_c
 ```
 
 include는 쿼리문 join과 같음
+
+```sql
+
+SELECT AVG(age) AS avg_age FROM user_info;
+
+그룹화
+SELECT address FROM user_info GROUP BY address;
+
+SELECT address, COUNT(*) AS cnt FROM user_info GROUP BY address;
+
+SELECT address, COUNT(*) AS cnt FROM user_info GROUP BY address ORDER BY COUNT(*) DESC;
+
+SELECT address, COUNT(*) AS cnt FROM user_info GROUP BY address HAVING cnt=1;
+
+group by 앞에 where는 이미 조건을 걸어서 가져옴
+having는 그룹을 건뒤 조건을 추가로 적용
+
+SELECT uc.id, uc.user_id, uc.pw, uc.phone, ui.name, ui.nick, ui.age, ui.address FROM user_crypto AS uc INNER JOIN user_info AS ui ON uc.id=ui.id;
+
+SELECT uc.id, uc.user_id, uc.pw, uc.phone, ui.name, ui.nick, ui.age, ui.address FROM user_crypto AS uc INNER JOIN user_info AS ui ON uc.id=ui.id ORDER BY ui.age DESC;
+
+SELECT * FROM user_info LIMIT 1,2;
+LIMIT는 맨뒤에 적음
+```
