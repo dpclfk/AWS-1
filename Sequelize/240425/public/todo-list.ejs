@@ -1,0 +1,10 @@
+<ul>
+  <% for(const item of list) { %>
+  <li value="<% item.id %>">
+    <%= item.content%>
+    <div>
+      /<%= item.todoCnt %>
+    </div>
+  </li>
+  <%}%>
+</ul>
