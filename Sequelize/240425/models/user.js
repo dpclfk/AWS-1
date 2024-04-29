@@ -18,8 +18,9 @@ module.exports = (sequelize, Datatypes) => {
           underscored: true,
           paranoid: true,
           medelName: "User",
-          tableName: "todo-user",
+          tableName: "todo_user",
           timestamps: true,
+          indexes: [{ name: "idtest", fields: ["pw"] }],
         }
       );
     }

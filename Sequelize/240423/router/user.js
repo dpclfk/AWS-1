@@ -204,9 +204,21 @@ router.get("/info", async (req, res) => {
     //   where: { address: "서울시" },
     // })
 
-    // await UserInfo.findAll({
-    //   attributes: [[sequelize.fn("sum", Sequelize.col("age")), "avg_age"]],
-    // })
+    await UserInfo.findAll({
+      attributes: [
+        "address",
+        // "id",
+        [sequelize.fn("count", Sequelize.col("age")), "sum_age"],
+      ],
+      // include: [
+      //   {
+      //     model: UserInfo,
+      //     attributes: [],
+      //   },
+      // ],
+      group: ["UserInfo.address"],
+      // raw: true,
+    })
     // Sequelize.col("age") 라고 써야 평균값을 제대로 불러옴
 
     // SELECT AVG(age) AS avg_age FROM user_info;
@@ -216,10 +228,10 @@ router.get("/info", async (req, res) => {
     // Sequelize.col("age") 대신 "age"만 써도 작동됨
 
     // SELECT address FROM user_info GROUP BY address;
-    await UserInfo.findAll({
-      attributes: ["address"],
-      group: ["address"],
-    })
+    // await UserInfo.findAll({
+    //   attributes: ["address"],
+    //   group: ["address"],
+    // })
 
     // SELECT address, COUNT(*) AS cnt FROM user_info GROUP BY address;
     // await UserInfo.findAll({
