@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  height: 3rem;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ebeef1;
+}
+
+.header .logo {
+  color: black;
+}
+
+.header .global button {
+  background-color: white;
+  border: none;
+}
+
+.header .global button svg {
+  opacity: 0.6;
+}
+
+.body {
+  /* height: calc(100% - 10rem); */
+  flex: 1;
+  background-color: aquamarine;
+}
+
+.footer {
+  height: 5rem;
+  /* background-color: skyblue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer a {
+  color: black;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.footer a:last-child {
+  font-weight: bold;
+}
