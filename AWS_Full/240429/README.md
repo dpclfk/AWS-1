@@ -86,6 +86,7 @@ sudo apt-get install nginx -y
 
 ```bash
 cd /etc/nginx
+cd /opt/homebrew/etc/nginx
 
 ls -al
 sudo vi nginx.conf
