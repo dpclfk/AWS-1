@@ -137,14 +137,14 @@ const userInfoElem = document.getElementById("user-info");
     )
   ).data;
 
-  console.log(user.user);
+  console.log(user.user.nick);
   if (user.user) {
     userInfoElem.innerHTML = `<div class="user-level">
     <div class="level-img">
       <img src="../imgs/icon-community-lfg.png" alt="" />
     </div>
     <div class="name-level">
-      <div class="user-name">${user.user}</div>
+      <div class="user-name">${user.user.nick}</div>
       <div class="user-now-level">레벨 1</div>
       <div class="user-level-bar"></div>
       <div class="next-level">다음 레벨까지 11 남음</div>

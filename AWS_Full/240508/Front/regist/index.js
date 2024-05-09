@@ -93,7 +93,7 @@ registFrom.onsubmit = (e) => {
     if (xhr.status == 200) {
       alert("성공!");
       location.href =
-        "http://127.0.0.1:5500/AWS/AWS_Full/240508/Front/login/index.html";
+        "../login";
     } else if (xhr.status == 400) {
       alert("비밀번호 확인!");
       //권한 문제로 거절
