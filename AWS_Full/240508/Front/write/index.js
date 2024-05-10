@@ -95,10 +95,88 @@ categoryList.forEach((item) => {
   item.categorys?.length && tempArr.push(...item.categorys);
 });
 tempArr.forEach((item, idx) => {
-  item.isWrite &&
-    (cateListElem.innerHTML += `<option value="${idx}">${item.name}</option>`);
+  item.isWrite && (cateListElem.innerHTML += `<option value="${idx}">${item.name}</option>`);
 });
+
+// console.log(category.options[category.selectedIndex].value);
 
 ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
   console.error(error);
 });
+
+const userInfoElem = document.getElementById("user-info");
+(async () => {
+  const user = (
+    await axios.post(
+      "http://localhost:8000/user/info", // url
+      { id: 1 }, // body
+      {
+        // options
+        withCredentials: true,
+      }
+    )
+  ).data;
+
+  console.log(user.user);
+  if (user.user) {
+    userInfoElem.innerHTML = `<div class="user-level">
+    <div class="level-img">
+      <img src="../imgs/icon-community-lfg.png" alt="" />
+    </div>
+    <div class="name-level">
+      <div class="user-name">${user.user}</div>
+      <div class="user-now-level">레벨 1</div>
+      <div class="user-level-bar"></div>
+      <div class="next-level">다음 레벨까지 11 남음</div>
+    </div>
+  </div>
+  <div class="user-menu">
+    <div class="user-write-comment">
+      <div class="user-writed">
+        <a href="./"><button>내가 쓴 글</button></a>
+      </div>
+      <div class="user-comment">
+        <a href="./"><button>내가 쓴 댓글</button></a>
+      </div>
+    </div>
+    <div class="user-ward-write">
+      <div class="user-ward">
+        <a href="./"><button>내 와드</button></a>
+      </div>
+      <div class="user-write">
+        <a href="./write"><button>글 쓰기</button></a>
+      </div>
+    </div>
+    <div class="user-link">
+      <a href="./">
+        <button>게임 계정 연결</button>
+      </a>
+    </div>
+  </div>`;
+  }
+})();
+
+const form = document.forms.write;
+
+// writeForm.onsubmit = (e) => {
+//   e.preventDefault();
+//   location.href = "http://localhost";
+// };
+
+document.getElementById("cancle").onclick = (e) => {
+  e.preventDefault();
+  location.href = "http://localhost";
+};
+
+console.log(category.selectedIndex);
+
+(async () => {
+  await axios.post(
+    "http://localhost:8000/board/write", // url
+    { title: form.title.value, categoryId: category.selectedIndex }, // body
+    {
+      // options
+      withCredentials: true,
+    }
+  );
+})();

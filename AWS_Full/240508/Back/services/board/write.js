@@ -3,6 +3,7 @@ import { Board, Category } from "../../models/index.js";
 export default async (req, res) => {
   try {
     if (!req.user) throw new Error("not logged in");
+    console.log(req.user);
     const category = await Category.findOne({
       where: { id: req.body.categoryId },
     });

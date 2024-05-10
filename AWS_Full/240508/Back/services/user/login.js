@@ -9,7 +9,7 @@ export default async (req, res) => {
       throw new Error("not found user");
     } else if (user.pw == req.body.pw) {
       res.cookie("user", user.id, {
-        masAge: 10 * 60 * 1000,
+        // maxAge: 10 * 60 * 1000,
         httpOnly: true,
         // secure: true,
         signed: true,

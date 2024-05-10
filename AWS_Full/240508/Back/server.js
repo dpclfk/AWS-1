@@ -18,7 +18,7 @@ import cors from "cors";
 
 import router from "./controllers/index.js";
 import "./models/index.js";
-import { Category, sequelize } from "./models/index.js";
+import { Category, sequelize, User } from "./models/index.js";
 // MVC 패턴
 
 dotenv.config();
@@ -42,42 +42,25 @@ try {
     await Category.create({ name: "전체", href: "./" });
     const info = await Category.create({ name: "정보", href: "./" });
     // const opgg = await Category.create({ name: "OP.GG 기획", href: "./" });
-    await info.addChildren(
-      await Category.create({ name: "OP.GG 기획", href: "./" })
-    );
+    await info.addChildren(await Category.create({ name: "OP.GG 기획", href: "./" }));
     // const news = await Category.create({ name: "유저 뉴스", href: "./" });
-    await info.addChildren(
-      await Category.create({ name: "유저 뉴스", href: "./" })
-    );
-    await info.addChildren(
-      await Category.create({ name: "팁과 노하우", href: "./" })
-    );
-    await info.addChildren(
-      await Category.create({ name: "패치노트", href: "./" })
-    );
+    await info.addChildren(await Category.create({ name: "유저 뉴스", href: "./" }));
+    await info.addChildren(await Category.create({ name: "팁과 노하우", href: "./" }));
+    await info.addChildren(await Category.create({ name: "패치노트", href: "./" }));
     const comm = await Category.create({ name: "커뮤니티", href: "./" });
     await comm.addChildren(await Category.create({ name: "자유", href: "./" }));
     await comm.addChildren(await Category.create({ name: "유머", href: "./" }));
     await comm.addChildren(await Category.create({ name: "질문", href: "./" }));
     await comm.addChildren(await Category.create({ name: "영상", href: "./" }));
 
-    await comm.addChildren(
-      await Category.create({ name: "사건 사고", href: "./" })
-    );
-    await comm.addChildren(
-      await Category.create({ name: "전적 인증", href: "./" })
-    );
-    await comm.addChildren(
-      await Category.create({ name: "팬 아트", href: "./" })
-    );
+    await comm.addChildren(await Category.create({ name: "사건 사고", href: "./" }));
+    await comm.addChildren(await Category.create({ name: "전적 인증", href: "./" }));
+    await comm.addChildren(await Category.create({ name: "팬 아트", href: "./" }));
 
     const eSport = await Category.create({ name: "e스포츠", href: "./" });
-    await eSport.addChildren(
-      await Category.create({ name: "LCK", href: "./" })
-    );
-    await eSport.addChildren(
-      await Category.create({ name: "기타 리그", href: "./" })
-    );
+    await eSport.addChildren(await Category.create({ name: "LCK", href: "./" }));
+    await eSport.addChildren(await Category.create({ name: "기타 리그", href: "./" }));
+    await User.create({ email: "qwe@qwe.qwe", pw: "qweqwe!2", nick: "qwe" });
   }
 } catch (err) {
   console.error(err);
