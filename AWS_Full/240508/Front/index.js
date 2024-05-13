@@ -161,7 +161,7 @@ const userInfoElem = document.getElementById("user-info");
     </div>
     <div class="user-ward-write">
       <div class="user-ward">
-        <a href="./"><button>내 와드</button></a>
+        <a href="./list"><button>내 와드</button></a>
       </div>
       <div class="user-write">
         <a href="./write"><button>글 쓰기</button></a>

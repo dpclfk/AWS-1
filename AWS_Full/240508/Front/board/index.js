@@ -89,12 +89,11 @@ linkList.forEach((link) => {
 
 const listElem = document.getElementById("list");
 
-import { Board } from "../../models";
+import Board from "../../models";
 const qweqwe = Board.findAll({});
+console.log(qweqwe);
 
 for (let i = 0; i < 40; i++) {
-  console.log(qweqwe);
-
   listElem.innerHTML += `<li>
 <a href="./">
   <div class="item">
