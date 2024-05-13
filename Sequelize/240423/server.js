@@ -7,11 +7,11 @@ require("dotenv").config();
 const router = require("./router");
 const db = require("./models");
 
-db.sequelize.sync({ force: true });
+db.sequelize.sync({ force: false });
 
 const app = express();
 
-app.set("port", process.env.PORT);
+app.set("port", process.env.PORT || 3000);
 
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));

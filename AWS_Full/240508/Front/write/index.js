@@ -100,16 +100,20 @@ tempArr.forEach((item, idx) => {
 
 // console.log(category.options[category.selectedIndex].value);
 
-ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
-  console.error(error);
-});
+ClassicEditor.create(document.querySelector("#editor"))
+  .then((newEditor) => {
+    editor = newEditor;
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 const userInfoElem = document.getElementById("user-info");
 (async () => {
   const user = (
     await axios.post(
       "http://localhost:8000/user/info", // url
-      { id: 1 }, // body
+      {}, // body
       {
         // options
         withCredentials: true,
@@ -117,7 +121,6 @@ const userInfoElem = document.getElementById("user-info");
     )
   ).data;
 
-  console.log(user.user);
   if (user.user) {
     userInfoElem.innerHTML = `<div class="user-level">
     <div class="level-img">
@@ -168,15 +171,30 @@ document.getElementById("cancle").onclick = (e) => {
   location.href = "http://localhost";
 };
 
-console.log(category.selectedIndex);
+document.getElementById("submit").onclick = async (e) => {
+  e.preventDefault();
+  if (category.selectedIndex == 0) {
+    alert("카테고리를 선택해주세요.");
+    return;
+  }
 
-(async () => {
+  if (form.title.value == "") {
+    alert("제목을 입력해주세요");
+    return;
+  }
+
+  if (editor.getData() == "") {
+    alert("내용을 입력해주세요");
+    return;
+  }
+
   await axios.post(
     "http://localhost:8000/board/write", // url
-    { title: form.title.value, categoryId: category.selectedIndex }, // body
+    { title: form.title.value, content: editor.getData(), categoryId: category.selectedIndex }, // body
     {
       // options
       withCredentials: true,
     }
   );
-})();
+  location.href = "http://localhost";
+};

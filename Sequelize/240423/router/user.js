@@ -99,10 +99,7 @@ router.post("/test2", async (req, res) => {
       for (const { userId, pw, phone, name, nick, age, address } of tempArr) {
         await UserCrypto.create({ userId, pw, phone }, { transaction });
         // await UserInfo.create({ name, nick: null }, { transaction });
-        await UserInfo.create(
-          { name, nick, age, address, gender: "M" },
-          { transaction }
-        );
+        await UserInfo.create({ name, nick, age, address, gender: "M" }, { transaction });
       }
     });
   } catch (err) {
@@ -189,10 +186,7 @@ router.get("/info", async (req, res) => {
       for (const { userId, pw, phone, name, nick, age, address } of tempArr) {
         await UserCrypto.create({ userId, pw, phone }, { transaction });
         // await UserInfo.create({ name, nick: null }, { transaction });
-        await UserInfo.create(
-          { name, nick, age, address, gender: "M" },
-          { transaction }
-        );
+        await UserInfo.create({ name, nick, age, address, gender: "M" }, { transaction });
       }
     });
   } catch (err) {
@@ -200,25 +194,25 @@ router.get("/info", async (req, res) => {
   }
 
   res.send(
-    // await UserInfo.findAll({
-    //   where: { address: "서울시" },
-    // })
-
     await UserInfo.findAll({
-      attributes: [
-        "address",
-        // "id",
-        [sequelize.fn("count", Sequelize.col("age")), "sum_age"],
-      ],
-      // include: [
-      //   {
-      //     model: UserInfo,
-      //     attributes: [],
-      //   },
-      // ],
-      group: ["UserInfo.address"],
-      // raw: true,
+      // where: { address: "서울시" },
     })
+
+    // await UserInfo.findAll({
+    //   attributes: [
+    //     "address",
+    //     // "id",
+    //     [sequelize.fn("count", Sequelize.col("age")), "sum_age"],
+    //   ],
+    //   // include: [
+    //   //   {
+    //   //     model: UserInfo,
+    //   //     attributes: [],
+    //   //   },
+    //   // ],
+    //   group: ["UserInfo.address"],
+    //   // raw: true,
+    // })
     // Sequelize.col("age") 라고 써야 평균값을 제대로 불러옴
 
     // SELECT AVG(age) AS avg_age FROM user_info;

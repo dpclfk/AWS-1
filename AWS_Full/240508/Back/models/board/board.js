@@ -10,7 +10,7 @@ export default class Board extends Model {
         },
         content: {
           type: DataTypes.TEXT,
-          // allowNull: false,
+          allowNull: false,
         },
       },
       {
