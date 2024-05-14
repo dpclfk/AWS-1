@@ -97,25 +97,6 @@ for (let i = 0; i < tempArr.length; ++i) {
 
 const listElem = document.getElementById("list");
 
-for (let i = 0; i < 40; i++)
-  listElem.innerHTML += `<li>
-<a href="./">
-  <div class="item">
-    <div class="like">
-      <p>▲</p>
-      <p>123</p>
-    </div>
-    <div class="text">
-      <h4>단톡방 자아분열 <span>[32]</span></h4>
-      <p>유머 | 2시간 전 | 더레이더</p>
-    </div>
-    <div class="img">
-      <img src="./imgs/bg_lol.jpg" alt="" />
-    </div>
-  </div>
-</a>
-</li>`;
-
 const userInfoElem = document.getElementById("user-info");
 (async () => {
   // const user = (
@@ -137,7 +118,7 @@ const userInfoElem = document.getElementById("user-info");
     )
   ).data;
 
-  console.log(user.user);
+  // console.log(user);
   if (user.user) {
     userInfoElem.innerHTML = `<div class="user-level">
     <div class="level-img">
@@ -173,5 +154,42 @@ const userInfoElem = document.getElementById("user-info");
       </a>
     </div>
   </div>`;
+  }
+
+  const boardList = (
+    await axios.post(
+      "http://localhost:8000/board/list", // url
+      {}, // body
+      {
+        // options
+        withCredentials: true,
+      }
+    )
+  ).data;
+  console.log(boardList.list[0].title);
+  console.log(boardList.list.length);
+  // console.log(boardList.list[0].Category.name);
+
+  let maxView = 20;
+
+  for (let i = boardList.list.length - 1; i > boardList.list.length - maxView; i--) {
+    if (i < 0) return;
+    listElem.innerHTML += `<li>
+  <a href="./">
+    <div class="item">
+      <div class="like">
+        <p>▲</p>
+        <p>123</p>
+      </div>
+      <div class="text">
+        <h4>${boardList.list[i].title} <span>[32]</span></h4>
+        <p>${boardList.list[i].Category.name} | 2시간 전 | ${boardList.list[i].User.nick}</p>
+      </div>
+      <div class="img">
+        <img src="./imgs/bg_lol.jpg" alt="" />
+      </div>
+    </div>
+  </a>
+  </li>`;
   }
 })();

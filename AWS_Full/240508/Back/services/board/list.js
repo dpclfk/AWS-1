@@ -40,7 +40,7 @@ export default async (req, res) => {
         },
       ],
     });
-    res.json(list);
+    res.json({ list: list });
   } catch (err) {
     console.error(err);
     res.send("error");
