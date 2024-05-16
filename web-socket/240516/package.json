@@ -1,0 +1,20 @@
+{
+  "name": "240516",
+  "version": "1.0.0",
+  "description": "- 양방향 통신 - A -> B || B -> A - Server -> Client || Client -> Server   - HTTP 규약때문에 Server->Client 불가능",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "type": "module"
+}
