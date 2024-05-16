@@ -89,9 +89,18 @@ linkList.forEach((link) => {
 
 const listElem = document.getElementById("list");
 
-import Board from "../../models";
-const qweqwe = Board.findAll({});
-console.log(qweqwe);
+(async () => {
+  const boardContent = (
+    await axios.post(
+      "http://localhost:8000/board/cate/2", // url
+      {},
+      {
+        withCredentials: true,
+      }
+    )
+  ).data;
+  console.log(boardContent);
+})();
 
 for (let i = 0; i < 40; i++) {
   listElem.innerHTML += `<li>
@@ -100,7 +109,7 @@ for (let i = 0; i < 40; i++) {
     <div class="like">
       <p>▲</p>
       <p>123</p>
-    </div>
+    </div>   f
     <div class="text">
       <h4>단톡방 자아분열 <span>[32]</span></h4>
       <p>유머 | 2시간 전 | 더레이더</p>

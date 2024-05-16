@@ -194,8 +194,46 @@ router.get("/info", async (req, res) => {
   }
 
   res.send(
+    // await UserCrypto.findAll({
+    //   // where: { address: "서울시" },
+    //   attributes: [
+    //     // "address",
+    //     "id",
+    //     // [sequelize.fn("count", Sequelize.col("age")), "이름"],
+    //   ],
+    //   include: [
+    //     {
+    //       model: UserInfo,
+    //       attributes: ["name"],
+    //     },
+    //   ],
+    //   // group: ["UserInfo.id"],
+    // })
+
     await UserInfo.findAll({
+      where: { address: "서울시" },
+      attributes: ["address"],
+      include: [
+        {
+          attributes: ["pw"],
+          model: UserCrypto,
+          include: [
+            {
+              attributes: ["age"],
+              model: UserInfo,
+            },
+          ],
+        },
+      ],
       // where: { address: "서울시" },
+      // include: [
+      //   {
+      //     model: UserCrypto,
+      //     include: [{ model: UserInfo }],
+      //   },
+      // ],
+      // order: [["age", "desc"]],
+      // having: { age: { [Sequelize.Op.gt]: 27 } },
     })
 
     // await UserInfo.findAll({

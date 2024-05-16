@@ -173,7 +173,7 @@ const userInfoElem = document.getElementById("user-info");
   // console.log(boardList.list.length);
   // console.log(boardList.list[0].Category.name);
   // console.log(nowDate);
-  console.log(boardList);
+  console.log(boardList.list[0]);
 
   let maxView = 20;
 
@@ -192,7 +192,7 @@ const userInfoElem = document.getElementById("user-info");
         .padStart(2, "0")}.${boardCreateAt.getDate().toString().padStart(2, "0")}`;
     }
     listElem.innerHTML += `<li>
-  <a href="./board?${i}">
+  <a href="./board/?${boardList.list[i].Category.name}/${i + 1}">
     <div class="item">
       <div class="like">
         <p>▲</p>
