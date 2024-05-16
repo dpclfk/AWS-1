@@ -1,7 +1,7 @@
 export default async (req, res) => {
   try {
     await res.cookie("user", undefined, {
-      masAge: 0,
+      maxAge: 0,
       httpOnly: true,
       secure: true,
       signed: true,

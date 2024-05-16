@@ -10,6 +10,7 @@ export default async (req, res) => {
     const board = await Board.create(req.body);
     await category.addBoard(board);
     await req.user.addBoard(board);
+
     res.json(board);
   } catch (err) {
     console.error(err);

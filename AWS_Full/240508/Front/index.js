@@ -166,16 +166,33 @@ const userInfoElem = document.getElementById("user-info");
       }
     )
   ).data;
-  console.log(boardList.list[0].title);
-  console.log(boardList.list.length);
+  // const listcr = boardList.list[0].createdAt;
+  // console.log(listcr);
+  // console.log(Date.parse(listcr));
+  // console.log(new Date(listcr).getDate());
+  // console.log(boardList.list.length);
   // console.log(boardList.list[0].Category.name);
+  // console.log(nowDate);
+  console.log(boardList);
 
   let maxView = 20;
 
+  const nowDate = new Date().getDate();
+
   for (let i = boardList.list.length - 1; i > boardList.list.length - maxView; i--) {
     if (i < 0) return;
+    const boardCreateAt = new Date(boardList.list[i].createdAt);
+    let listCreateAt = {};
+    if (boardCreateAt.getDate() == nowDate) {
+      listCreateAt = `${boardCreateAt.getHours()} : ${boardCreateAt.getMinutes()}`;
+    } else {
+      listCreateAt = `${boardCreateAt.getYear() - 100}.${boardCreateAt
+        .getMonth()
+        .toString()
+        .padStart(2, "0")}.${boardCreateAt.getDate().toString().padStart(2, "0")}`;
+    }
     listElem.innerHTML += `<li>
-  <a href="./">
+  <a href="./board?${i}">
     <div class="item">
       <div class="like">
         <p>▲</p>
@@ -183,7 +200,7 @@ const userInfoElem = document.getElementById("user-info");
       </div>
       <div class="text">
         <h4>${boardList.list[i].title} <span>[32]</span></h4>
-        <p>${boardList.list[i].Category.name} | 2시간 전 | ${boardList.list[i].User.nick}</p>
+        <p>${boardList.list[i].Category.name} | ${listCreateAt} | ${boardList.list[i].User.nick}</p>
       </div>
       <div class="img">
         <img src="./imgs/bg_lol.jpg" alt="" />

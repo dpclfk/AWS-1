@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET || "aws"));
 
 app.use(router);
-const force = true;
+const force = false;
 
 try {
   await sequelize.sync({ force });
@@ -61,6 +61,7 @@ try {
     await eSport.addChildren(await Category.create({ name: "LCK", href: "./" }));
     await eSport.addChildren(await Category.create({ name: "기타 리그", href: "./" }));
     await User.create({ email: "qwe@qwe.qwe", pw: "qweqwe!2", nick: "qwe" });
+    await User.create({ email: "qwe@qwe.qwee", pw: "qweqwe!2", nick: "qwee" });
   }
 } catch (err) {
   console.error(err);
