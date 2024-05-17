@@ -192,7 +192,7 @@ const userInfoElem = document.getElementById("user-info");
         .padStart(2, "0")}.${boardCreateAt.getDate().toString().padStart(2, "0")}`;
     }
     listElem.innerHTML += `<li>
-  <a href="./board/?${boardList.list[i].Category.name}/${i + 1}">
+  <a href="./board/?cate=${boardList.list[i].Category.name}&id=${i + 1}">
     <div class="item">
       <div class="like">
         <p>▲</p>

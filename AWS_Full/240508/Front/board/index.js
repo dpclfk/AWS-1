@@ -90,9 +90,14 @@ linkList.forEach((link) => {
 const listElem = document.getElementById("list");
 
 (async () => {
+  const loca = location.search
+    .slice(1)
+    .split("&")
+    .map((item) => item.split("="));
+  const nowId = loca[1][1];
   const boardContent = (
     await axios.post(
-      "http://localhost:8000/board/cate/2", // url
+      `http://localhost:8000/board/cate/${nowId}`, // url
       {},
       {
         withCredentials: true,
@@ -109,7 +114,7 @@ for (let i = 0; i < 40; i++) {
     <div class="like">
       <p>▲</p>
       <p>123</p>
-    </div>   f
+    </div>
     <div class="text">
       <h4>단톡방 자아분열 <span>[32]</span></h4>
       <p>유머 | 2시간 전 | 더레이더</p>
