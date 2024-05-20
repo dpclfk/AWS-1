@@ -2,16 +2,14 @@ import { Board, Category, User } from "../../models/index.js";
 
 export default async (req, res) => {
   try {
-    const content = await User.findAll({
+    const content = await Board.findAll({
+      where: { id: req.params.id },
       include: [
         {
-          model: Board,
-          where: { id: req.params.id },
-          include: [
-            {
-              model: Category,
-            },
-          ],
+          model: User,
+        },
+        {
+          model: Category,
         },
       ],
     });

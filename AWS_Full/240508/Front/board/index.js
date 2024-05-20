@@ -94,6 +94,7 @@ const listElem = document.getElementById("list");
     .slice(1)
     .split("&")
     .map((item) => item.split("="));
+  console.log(loca);
   const nowId = loca[1][1];
   const boardContent = (
     await axios.post(
