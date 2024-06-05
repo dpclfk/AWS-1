@@ -96,10 +96,10 @@ const listElem = document.getElementById("list");
     .map((item) => item.split("="));
   console.log(loca);
   const nowId = loca[1][1];
-  const boardContent = (
+  const boardContent = await (
     await axios.post(
-      `http://localhost:8000/board/cate/${nowId}`, // url
-      {},
+      `http://localhost:8000/board/?id=${nowId}`, // url
+      { cate: "cate" },
       {
         withCredentials: true,
       }

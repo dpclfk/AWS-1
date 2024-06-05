@@ -8,17 +8,17 @@
 import crypto from "crypto";
 // 암호화에 대한 내장 모듈
 
-const hashAlgorithm = crypto.createHash("sha256");
-// hash 암호화 객체를 만든다. sha256은 hash 종류 중 하나
-const hashing = hashAlgorithm.update("비밀번호를 입력하세요.");
-const hashedString = hashing.digest("hex");
-console.log(hashedString);
+// const hashAlgorithm = crypto.createHash("sha256");
+// // hash 암호화 객체를 만든다. sha256은 hash 종류 중 하나
+// const hashing = crypto.createHash("sha256").update("비밀번호를 입력하세요.");
+const hashedString = crypto.createHash("sha256").update("비밀번호를 입력하세요.").digest("hex");
+console.log("st1 : " + hashedString);
 
 const hashAlgorithm2 = crypto.createHash("sha256");
 // hash 암호화 객체를 만든다. sha256은 hash 종류 중 하나
 const hashing2 = hashAlgorithm2.update("비밀번호를 입력하세요");
 const hashedString2 = hashing2.digest("hex");
-console.log(hashedString2);
+console.log("st2 : " + hashedString2);
 // sha256 => 256 bits => 32 bytes => 64글자
 // 최대갯수 2 ** 256 => 요즘은 컴퓨터가 빨라서 이걸 다 넣어두고 찾는 방법도 있다.
 // - 레인보우 테이블
@@ -26,14 +26,14 @@ console.log(hashedString2);
 const hashAlgorithm3 = crypto.createHash("sha512");
 const hashing3 = hashAlgorithm3.update("비밀번호를 입력하세요");
 const hashedString3 = hashing3.digest("hex");
-console.log(hashedString3);
+console.log("st3 : " + hashedString3);
 // 종류 : MD5, SHA-1, SHA-2(SHA-256), SHA-512
 
 const salt = "asfasfasfas";
 const hashAlgorithm4 = crypto.createHash("sha512");
 const hashing4 = hashAlgorithm4.update("비밀번호를 입력하세요" + salt);
 const hashedString4 = hashing4.digest("hex");
-console.log(hashedString4);
+console.log("st4 : " + hashedString4);
 
 // salt, 소금, 암호화에 있어서 의미 없는, 필요 없는 등의 문자열을 포함하여 진행한다.
 //  - 해커가 쉽게 암호를 추측할 수 없게 만든다.

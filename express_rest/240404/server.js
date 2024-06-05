@@ -14,7 +14,7 @@ app.use("/imgs", express.static("uploads"));
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, callback) => {
-      // console.log(1, file);
+      // console.log("1asdasdsadasd", file);
       callback(null, "./uploads");
     },
     filename: (req, file, callback) => {
@@ -37,21 +37,18 @@ app.use("/write", (req, res, next) => {
 const imgs = [];
 
 app.post("/write", upload.array("img"), (req, res) => {
+  // console.log("asdasdqwdzxcxz", upload);
+  // console.log("oiuiuiopuiopoiuooiup", upload.array("img"));
   // console.log(req.cookies);
   // console.log(req.body);
   // console.log(req.file);
   // console.log(req.files);
-
   // console.log(imgs);
-
   // res.cookie("file", req.file.filename);
   res.redirect("/");
-
   // req.on('data', (data) =>{
-
   // })
   // req.on('end', () =>{
-
   // })
 });
 

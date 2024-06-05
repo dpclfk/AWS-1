@@ -9,7 +9,7 @@ const key = crypto.scryptSync("암호", "소금", 32);
 console.log(key.length);
 
 const iv = crypto.randomBytes(16);
-console.log(iv.length);
+console.log(...iv);
 // initialization vector
 
 const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);

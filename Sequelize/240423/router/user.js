@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { UserCrypto, UserInfo, sequelize, Sequelize } = require("../models");
+const { UserCrypto, UserInfo, sequelize, Sequelize, UserTest } = require("../models");
 
 router.post("/test", async (req, res) => {
   const transaction = await sequelize.transaction();
@@ -165,7 +165,7 @@ router.get("/info", async (req, res) => {
         },
         {
           userId: "test6",
-          pw: "qwer",
+          pw: "qwerd",
           phone: "123-4567-1234",
           name: "이승배",
           nick: "무념무상",
@@ -174,7 +174,7 @@ router.get("/info", async (req, res) => {
         },
         {
           userId: "test7",
-          pw: "qwer",
+          pw: "qwerd",
           phone: "123-4567-1234",
           name: "이정배",
           nick: "햄스터",
@@ -186,14 +186,29 @@ router.get("/info", async (req, res) => {
       for (const { userId, pw, phone, name, nick, age, address } of tempArr) {
         await UserCrypto.create({ userId, pw, phone }, { transaction });
         // await UserInfo.create({ name, nick: null }, { transaction });
-        await UserInfo.create({ name, nick, age, address, gender: "M" }, { transaction });
+
+        await UserInfo.create({ name, nick, address, gender: "M" }, { transaction });
+        await UserTest.create({ name, address, teid: 1 }, { transaction });
       }
     });
   } catch (err) {
     console.error(err);
   }
 
-  res.send(
+  // const upt = await UserInfo.findOne({
+  //   where: { id: 3 },
+  // });
+  await UserInfo.destroy({
+    where: { id: 3 },
+  });
+  // console.log(upt);
+
+  const testtest = await UserInfo.findOne({
+    where: { address: "아아" },
+  });
+  console.log(testtest);
+
+  res.json(
     // await UserCrypto.findAll({
     //   // where: { address: "서울시" },
     //   attributes: [
@@ -211,30 +226,60 @@ router.get("/info", async (req, res) => {
     // })
 
     await UserInfo.findAll({
-      where: { address: "서울시" },
-      attributes: ["address"],
+      // where: { id: "1" },
+      // attributes: ["address"],
+      // attributes: {
+      //   exclude: ["createdAt", "updatedAt", "deletedAt"],
+      //   // "address",
+      // },
+      attributes: [
+        //   //   "id",
+        [sequelize.fn("count", sequelize.col("UserTests.id")), "testasd"],
+        //   //   [sequelize.fn("count", sequelize.col("UserCrypto.id")), "testasdzx"],
+      ],
+      // // group: ["address"],
+
       include: [
         {
-          attributes: ["pw"],
-          model: UserCrypto,
-          include: [
-            {
-              attributes: ["age"],
-              model: UserInfo,
-            },
-          ],
+          model: UserTest,
+          attributes: [],
+          //     // order: [["id", "DESC"]],
+          //     // offset: 3,
+          //     // limit: 3,
+          //     // attributes: [[sequelize.fn("count", Sequelize.col("address")), "testasd"]],
+          //     // attributes: [[sequelize.fn("count"), "testasd"]],
+          //     // attributes: ["address"],
+          //     // group: ["teid"],
+
+          //     // where: { address: "아구" },
+
+          //     //   // attributes: [[sequelize.fn("count", Sequelize.col("address")), "이름"]],
+          //     //   // group: "address",
         },
       ],
-      // where: { address: "서울시" },
-      // include: [
-      //   {
-      //     model: UserCrypto,
-      //     include: [{ model: UserInfo }],
-      //   },
-      // ],
-      // order: [["age", "desc"]],
-      // having: { age: { [Sequelize.Op.gt]: 27 } },
+
+      // order: [["id", "DESC"]],
+      group: ["id"],
     })
+
+    // offset: 0,
+    // limit: 3,
+
+    // {
+    // },
+    // order: [["id", "DESC"]],
+    // offset: 1,
+    // limit: 2,
+    // where: { address: "서울시" },
+    // include: [
+    //   {
+    //     model: UserCrypto,
+    //     include: [{ model: UserInfo }],
+    //   },
+    // ],
+    // order: [["age", "desc"]],
+    // having: { age: { [Sequelize.Op.gt]: 27 } },
+    // })
 
     // await UserInfo.findAll({
     //   attributes: [
@@ -257,7 +302,6 @@ router.get("/info", async (req, res) => {
     // await UserInfo.findAll({
     //   attributes: [[sequelize.fn("count", "age"), "avg_age"]],
     // })
-    // Sequelize.col("age") 대신 "age"만 써도 작동됨
 
     // SELECT address FROM user_info GROUP BY address;
     // await UserInfo.findAll({

@@ -17,7 +17,7 @@ import cors from "cors";
 // 해당 내용은 Header에 포함된다
 
 import router from "./controllers/index.js";
-import "./models/index.js";
+// import "./models/index.js";
 import { Category, sequelize, User } from "./models/index.js";
 // MVC 패턴
 

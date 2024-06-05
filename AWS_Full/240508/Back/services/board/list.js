@@ -2,6 +2,7 @@ import { Board, Category, User } from "../../models/index.js";
 
 export default async (req, res) => {
   try {
+    console.log(req.body.testid);
     const list = await Board.findAll({
       include: [
         {

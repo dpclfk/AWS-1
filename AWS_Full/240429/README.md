@@ -155,6 +155,7 @@ sudo chmod 777 -R html
 
 ```bash
 sudo service nginx restart
+brew services restart nginx
 ```
 
 ## certbot

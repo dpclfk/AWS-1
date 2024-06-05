@@ -7,6 +7,12 @@ const router = Router();
 
 router.post("/list", getList);
 router.post("/write", write);
-router.post("/cate/:id", content);
+router.post("/", (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  console.log(req.user);
+  res.json({ result: "hi" });
+});
+// router.post("/", content);
 
 export default router;

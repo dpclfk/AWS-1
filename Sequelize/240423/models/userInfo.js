@@ -39,7 +39,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "id",
         targetKey: "id",
       });
+      db.UserInfo.hasMany(db.UserTest, {
+        foreignKey: "teid",
+        sourceKey: "id",
+      });
     }
+    // static associate(db) {
+
+    // }
   }
   return UserInfo.init();
 };

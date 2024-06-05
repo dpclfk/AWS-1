@@ -137,7 +137,7 @@ const userInfoElem = document.getElementById("user-info");
         <a href="./"><button>내가 쓴 글</button></a>
       </div>
       <div class="user-comment">
-        <a href="./"><button>내가 쓴 댓글</button></a>
+        <a href="./logout"><button>내가 쓴 댓글</button></a>
       </div>
     </div>
     <div class="user-ward-write">
@@ -159,7 +159,7 @@ const userInfoElem = document.getElementById("user-info");
   const boardList = (
     await axios.post(
       "http://localhost:8000/board/list", // url
-      {}, // body
+      { testid: 1 }, // body
       {
         // options
         withCredentials: true,
@@ -173,7 +173,7 @@ const userInfoElem = document.getElementById("user-info");
   // console.log(boardList.list.length);
   // console.log(boardList.list[0].Category.name);
   // console.log(nowDate);
-  console.log(boardList.list[0]);
+  console.log(boardList.list);
 
   let maxView = 20;
 

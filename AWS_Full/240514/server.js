@@ -1,7 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
-const FileStore = require("session-file-store")(session);
+// const session = require("express-session");
+// const FileStore = require("session-file-store")(session);
 
 const router = require("./router");
 
