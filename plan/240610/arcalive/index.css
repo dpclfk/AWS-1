@@ -17,10 +17,10 @@ h3 {
 }
 
 .chlist {
-  /* background-color: blue; */
   width: 50%;
   padding: 10px;
   border-bottom: 1px solid black;
+  margin-left: 10px;
 }
 .chlist:nth-child(odd) {
   border-right: 1px solid black;
