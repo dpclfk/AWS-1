@@ -1,0 +1,15 @@
+{
+  "name": "240610",
+  "version": "1.0.0",
+  "description": "- 클래스를 어떻게 할당하고 상속하고 하는지 정리하는 문서",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
