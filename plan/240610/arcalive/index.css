@@ -1,25 +1,5 @@
-body {
-  margin: 0;
-}
-
 h3 {
   margin: 0;
-}
-
-.container {
-  max-width: 1200px;
-  height: auto;
-  margin: auto;
-}
-
-.flex-box {
-  display: flex;
-  /* gap: 0.5rem; */
-}
-
-.header {
-  background-color: #3d414d;
-  height: 52px;
 }
 
 .body {
