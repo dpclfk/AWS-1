@@ -1,0 +1,21 @@
+#count-btn {
+  color: blue;
+  > .count {
+    //#count-btn #count {}
+    // &표시는 자기 자신
+    color: red;
+    &.even {
+      color: red;
+      background-color: yellow;
+    }
+
+    &.odd {
+      color: white;
+      background-color: black;
+    }
+    &.third {
+      color: green;
+      background-color: pink;
+    }
+  }
+}
