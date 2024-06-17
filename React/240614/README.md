@@ -9,7 +9,7 @@
 - 번들링 라이브러리
 - TS 가능, Babel을 의존성으로 가진다
 - 여러 라이브러리를 함께 사용해서 하나의 묶음으로 내보낼수 있다.
-- 난독화를 퐈함 -> 애초에 사람이 읽을 수 없게 만든다.
+- 난독화를 포함 -> 애초에 사람이 읽을 수 없게 만든다.
 - 리액트에 있기때문에 직접적으로 다룰일이 거의없다.
 
 ## Test
@@ -28,11 +28,17 @@ npm run serve #서버 시작
 npm run build
 ```
 
+```bash
+
 npx webpack init
+# npm init후 선택사항
 y
 ts
 yyn
 sass
-y only
+yy only
 y
 npm
+y
+# 여기까지
+```

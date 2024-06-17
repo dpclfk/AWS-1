@@ -24,13 +24,13 @@
 
       class DivElement extends MyElement {
         constructor(parent, text) {
-          super(parent, "div"); // == MyElement(parent, "li")
+          super(parent, "div"); // == MyElement(parent, "div")
           this.element.innerHTML = text;
         }
       }
 
       const olElem = new MyElement(document.body, "ol");
-      new Item(olElem.element, "1");
+      new Item(olElem.element, "2");
       new Item(olElem.element, "2");
       new Item(olElem.element, "3");
       new Item(olElem.element, "4");
