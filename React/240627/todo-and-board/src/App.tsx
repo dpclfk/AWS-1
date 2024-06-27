@@ -1,26 +1,47 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.scss";
+import React, { FC } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import Todo from "./Compontents/Todo";
+import Board from "./Compontents/Board/Container";
+import path from "path";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav>
+        <ul className="flex px-4 py-2 gap-4">
+          <LinkButton path={"/"}>게시판</LinkButton>
+          <LinkButton path={"/todo"}>목록</LinkButton>
+          {/* <li>
+            <Link to={"/"}>
+              <button className="boarder px-4 py-2 border rounded-md border-black">게시판</button>
+            </Link>
+          </li>
+          <li>
+            <Link to={"/todo"}>
+              <button>할일</button>
+            </Link>
+          </li> */}
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Board />} />
+        <Route path="/todo" element={<Todo />} />
+      </Routes>
     </div>
   );
-}
+};
+
+export const LinkButton: FC<{ path: string; children: string | JSX.Element | JSX.Element[] }> = ({
+  path,
+  children,
+}) => {
+  return (
+    <li>
+      <Link to={path}>
+        <button className="boarder px-4 py-2 border rounded-md border-black">{children}</button>
+      </Link>
+    </li>
+  );
+};
 
 export default App;
