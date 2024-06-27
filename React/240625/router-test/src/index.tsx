@@ -4,6 +4,7 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import Test from "./Components/Test";
 // 앞으로 이 하위 컴포넌트에서 Routing을 할 것입니다.
 // const router = [{path:"/"}] // 5이상에서
 
@@ -18,21 +19,30 @@ root.render(
 
 // react-router-dom 6버전 맛보기
 // const router = createBrowserRouter([
-//   { path: "/", element: <div>하이</div> },
 //   {
-//     path: "/test",
+//     path: "/",
 //     element: (
 //       <div>
-//         testing<Outlet></Outlet>
+//         <App />
 //       </div>
 //     ),
-//     children: [
-//       {
-//         path: "tt",
-//         element: <div>TestTest</div>,
-//       },
-//     ],
 //   },
+// {
+//   path: "/test",
+//   element: (
+//     <div>
+//       testing
+//       <Test></Test>
+//       <Outlet></Outlet>
+//     </div>
+//   ),
+//   children: [
+//     {
+//       path: "tt",
+//       element: <div>TestTest</div>,
+//     },
+//   ],
+// },
 // ]);
 
 // root.render(<RouterProvider router={router} />);

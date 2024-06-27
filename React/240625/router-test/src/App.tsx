@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<div>홈페이지</div>} />
         {/* <Route path="/test/*" element={<Test></Test>} /> */}
-        <Route path="/test/:id/*" Component={Test} />
+        <Route path="/test/*" Component={Test} />
       </Routes>
     </div>
   );
