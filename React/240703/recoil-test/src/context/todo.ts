@@ -100,7 +100,7 @@ export const testbtn = selector<string>({
 export const getServerList = selector<ITodo[]>({
   key: "getServerList",
   get: async () => {
-    const { data } = await axios.get("http://localhost:3080/api/todo/1");
+    const { data } = await axios.get("http://localhost:3080/api/todo/1/d");
     console.log(data);
     return data;
   },

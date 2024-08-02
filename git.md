@@ -26,6 +26,7 @@ git push origin branchName
 
 - -m "커밋 메시지"
 - 아래와 같이 해당 커밋이 어떤건지 분류해준다.
+
   - feat: 추가
   - fis: 긴급 수정
   - edit: 수정
@@ -41,3 +42,33 @@ git push origin branchName
       add board list
       add board edit
   - 등등의 많은 컨벤션이 있다.
+
+  static associate(models) {
+  models.CategoryTest.hasMany(CategoryTest, {
+  as: "children",
+  foreignKey: "CategoryId",
+  onDelete: "cascade",
+  });
+  CategoryTest.belongsTo(CategoryTest, {
+  as: "parent",
+  foreignKey: "CategoryId",
+  onDelete: "cascade",
+  });
+  }
+
+  static associate({ CategoryTest }: any) {
+  }
+
+  static associate({}) {}
+  static associate({}: {}) {
+  }
+
+type Constructor<T> = new (...args: any[]) => T; //모델 최상위에 적용
+
+static associate<T>({}: { CategoryTest: Constructor<T> }) {
+}
+
+키워드 검색
+findAll({
+where: { [and]: [{ private: false }], [or]: [{ title: { [like]: `%${keyword}%` } }, { content: { [like]: `%${keyword}%` } }] },
+})

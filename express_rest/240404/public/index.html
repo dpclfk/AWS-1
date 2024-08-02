@@ -1,7 +1,7 @@
 <html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시판</title>
   </head>
   <body>
@@ -18,15 +18,15 @@
         temp.alt = alt;
         return temp;
       }
-      document.getElementById('input-img').onchange = (e) => {
+      document.getElementById("input-img").onchange = (e) => {
         console.dir(e.target);
-        const parentElem = document.getElementById('preview');
+        const parentElem = document.getElementById("preview");
         parentElem.innerHTML = "";
         [...e.target.files].forEach((file) => {
           console.log(file);
           parentElem.innerHTML += `<img src="${URL.createObjectURL(file)}"/>`;
-        })
-      }
+        });
+      };
     </script>
   </body>
 </html>

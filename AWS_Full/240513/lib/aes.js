@@ -9,11 +9,13 @@ const key = crypto.scryptSync("암호", "소금", 32);
 console.log(key.length);
 
 const iv = crypto.randomBytes(16);
-console.log(...iv);
+// console.log(iv);
 // initialization vector
 
+// const iv = "<Buffer fe db 11 e2 ed 50 16 b0 4f ee 0d 43 96 0b 1a 13>";
+
 const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
-let result = cipher.update("우리의 비밀번호", "utf-8", "hex");
+let result = cipher.update("qwerasdfzxcvqwer1234@google.com", "utf-8", "hex");
 result += cipher.final("hex");
 console.log(result);
 

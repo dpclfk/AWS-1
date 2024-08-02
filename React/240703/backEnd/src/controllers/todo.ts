@@ -4,7 +4,9 @@ import { Todo } from "../models";
 export const getList = async (req: Request, res: Response) => {
   console.log(new Date());
   try {
+    console.log(req.params.page);
     let { page } = req.params;
+    console.log(page);
     if (!page) page = "1";
     const list = await Todo.findAll({ limit: 10, offset: (+page - 1) * 10 });
     res.json(list);

@@ -5,6 +5,7 @@ select \* from user_crypto order by id DESC LIMIT 1,2
 
 - 일의 최소 단위
 - 일 자체가 끝나야 적용한다.
+- 키워드 : 은행, 결제, 취소, 한번에
 
 ## 실습
 
