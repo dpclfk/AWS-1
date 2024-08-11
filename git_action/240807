@@ -1,0 +1,43 @@
+탄력적 IP 주소
+돈 추가로 나감
+
+도메인
+route53
+호스팅영억
+도메인 구매한거 클릭
+레코드 생성
+단순 라우팅 -> 다움 -> 단순 레코드 정의(하위 도메인) -> A 또는 C네임 -> 엔드포인트 선택
+-> 레코드 유형에따른 IP -> 사용할 인스턴스 ip
+
+
+AWS Certificate Manager
+버지니아 북부로 이동(**중요**)
+인증서 요청
+퍼블릭 인증서 요청
+위에서 만든거 요청
+(잠깐 대기)
+Route 53에서 레코드 생성
+
+CloudFront
+배포 생성
+인스턴스의 퍼블릭 DNS 복사해서 오리진 도메인
+
+뷰어 프로토콜 정책 Redirect HTTP to HTTPS
+
+캐시 정책 cashingDisabled
+
+Custom SSL certificate - optional
+방금 인증서 만든거
+
+배포 생성
+
+Alternative domain name (CNAMEs) - optional
+(대체 도메인)
+test.dpclfk.com
+
+Route 53 에서
+호스팅영역에서 도메인 들어가서 레코드 편집
+별칭 클릭
+엔드포인트 클라우드프론트
+배포선택 클라우드프론트 저장
+

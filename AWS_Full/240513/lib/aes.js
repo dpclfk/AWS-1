@@ -6,13 +6,19 @@
 import crypto from "crypto";
 
 const key = crypto.scryptSync("암호", "소금", 32);
-console.log(key.length);
+console.log(key);
 
 const iv = crypto.randomBytes(16);
 // console.log(iv);
 // initialization vector
 
 // const iv = "<Buffer fe db 11 e2 ed 50 16 b0 4f ee 0d 43 96 0b 1a 13>";
+
+const temp = crypto.randomBytes(16);
+const temp2 = temp.toString("base64");
+console.log(temp);
+console.log(temp2);
+console.log(Buffer.from(temp2, "base64"));
 
 const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
 let result = cipher.update("qwerasdfzxcvqwer1234@google.com", "utf-8", "hex");

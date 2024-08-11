@@ -1,0 +1,2 @@
+AWS  인바운드 규칙 8 = 첫번째, 16 = 2번째까지 24 = 3번째까지 32 = 4번째 전부
+sudo vi /etc/nginx/sites-available/default
