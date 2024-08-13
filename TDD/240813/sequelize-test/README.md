@@ -1,0 +1,18 @@
+# sequelize-typescript
+
+```bash
+npm i sequelize-typescript
+```
+
+- typescript에서 sequelize를 편하게 쓰기위한 라이브러리
+
+# Decorator
+
+- 코드를 꾸며주는 코드
+- 미들웨어 -> 중간단계
+- 앞에 달린 코드
+
+```ts
+@test
+class Test {}
+```
